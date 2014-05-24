@@ -17,3 +17,9 @@ class TaskModelTest(TestCase):
         """Should contain status field"""
         self.assertIn("status", self.fields)
 
+    def test_status_choices(self):
+        """Field status should contain choices"""
+        field = Task._meta.get_field("status")
+        self.assertIsInstance(field.choices, tuple)
+        self.assertTupleEqual(field.choices, Task.STATUS_CHOICES)
+
