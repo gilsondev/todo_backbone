@@ -5,6 +5,8 @@ from django.core.urlresolvers import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 
+from task.models import Task
+
 
 class TasksTest(APITestCase):
     def test_list_tasks(self):
@@ -16,7 +18,7 @@ class TasksTest(APITestCase):
 
     def test_create_task(self):
         """
-        Sould create a task
+        Should create a task
         """
         data = {'description': 'Task Test', 'status': 'incomplete'}
         response = self.client.post(reverse('task_new'), data, format='json')
@@ -24,3 +26,19 @@ class TasksTest(APITestCase):
 
         data['id'] = 1
         self.assertEqual(response.data, data)
+
+    def test_task_completed(self):
+        """
+        Should retrieve task and define stauts as completed.
+        """
+        data = {'description': 'Task Test', 'status': 'incomplete'}
+        task = Task.objects.create(**data)
+
+        data_updated = {'description': 'Update Task', 'status': 'incomplete'}
+        response = self.client.put(reverse('task_update',
+                                           kwargs={'pk': task.pk}),
+                                   data,
+                                   format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertNotEqual(response.data.get('description'),
+                            data_updated.get('description'))

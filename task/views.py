@@ -14,3 +14,8 @@ class TaskListView(generics.ListAPIView):
 class TaskNewView(generics.CreateAPIView):
     model = Task
     serializer_class = TaskSerializer
+
+
+class TaskUpdateView(generics.RetrieveUpdateAPIView):
+    model = Task
+    serializer_class = TaskSerializer
