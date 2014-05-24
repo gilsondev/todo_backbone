@@ -10,8 +10,8 @@ class Task(models.Model):
     COMPLETE = 'complete'
 
     STATUS_CHOICES = (
-        (_(u"Incomplete"), INCOMPLETE),
-        (_(u"Complete"), COMPLETE),
+        (INCOMPLETE, _(u"Incomplete")),
+        (COMPLETE, _(u"Complete")),
     )
 
     description = models.TextField()

@@ -9,3 +9,8 @@ from task.serializers import TaskSerializer
 class TaskListView(generics.ListAPIView):
     model = Task
     serializer_class = TaskSerializer
+
+
+class TaskNewView(generics.CreateAPIView):
+    model = Task
+    serializer_class = TaskSerializer
