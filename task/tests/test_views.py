@@ -27,9 +27,9 @@ class TasksTest(APITestCase):
         data['id'] = 1
         self.assertEqual(response.data, data)
 
-    def test_task_completed(self):
+    def test_update_task(self):
         """
-        Should retrieve task and define stauts as completed.
+        Should retrieve task and update it.
         """
         data = {'description': 'Task Test', 'status': 'incomplete'}
         task = Task.objects.create(**data)
