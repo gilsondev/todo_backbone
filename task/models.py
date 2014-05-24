@@ -16,3 +16,6 @@ class Task(models.Model):
 
     description = models.TextField()
     status = models.CharField(max_length=30, choices=STATUS_CHOICES)
+
+    class Meta:
+        db_table = 'tasks'
