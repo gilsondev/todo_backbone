@@ -37,8 +37,26 @@ class TasksTest(APITestCase):
         data_updated = {'description': 'Update Task', 'status': 'incomplete'}
         response = self.client.put(reverse('task_update',
                                            kwargs={'pk': task.pk}),
-                                   data,
+                                   data_updated,
                                    format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertNotEqual(response.data.get('description'),
+        self.assertEqual(response.data.get('description'),
                             data_updated.get('description'))
+
+    def test_task_completed(self):
+        """
+        Should retrieve task and define as completed
+        """
+        data = {'description': 'Task Test', 'status': 'incomplete'}
+        task = Task.objects.create(**data)
+
+        data_updated = {'description': data.get('description'),
+                        'status': 'complete'}
+        response = self.client.put(reverse('task_update',
+                                           kwargs={'pk': task.pk}),
+                                   data_updated,
+                                   format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data.get('status'),
+                         data_updated.get('status'))
+
