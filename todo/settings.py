@@ -95,4 +95,4 @@ STATIC_URL = '/static/'
 
 # Tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-NOSE_ARGS = ('--with-coverage', '-s',)
+NOSE_ARGS = ('--with-coverage', '--cover-package=task', '-s',)
