@@ -1,0 +1,3 @@
+[run]
+include = task/*
+omit = task/migrations/*
