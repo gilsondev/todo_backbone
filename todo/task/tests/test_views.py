@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-from task.models import Task
+from todo.task.models import Task
 
 
 class TasksTest(APITestCase):

@@ -2,7 +2,7 @@
 
 from django.test import TestCase
 
-from task.models import Task
+from todo.task.models import Task
 
 
 class TaskModelTest(TestCase):
