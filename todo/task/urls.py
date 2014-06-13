@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 
-from task.views import TaskListView, TaskUpdateView
+from todo.task.views import TaskListView, TaskUpdateView
 
 urlpatterns = patterns('',
     url(r'^todo/$', TaskListView.as_view(), name='todo_listcreate'),

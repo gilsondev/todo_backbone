@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_DIR = os.path.join(BASE_DIR, os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -98,4 +99,9 @@ STATIC_URL = '/static/'
 
 # Tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-NOSE_ARGS = ('--with-coverage', '--cover-package=task', '-s',)
+NOSE_ARGS = (
+    '--where=%s' % PROJECT_DIR,
+    '--with-coverage',
+    '--cover-package=task',
+    '-s',
+)
